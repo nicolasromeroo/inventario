@@ -1,0 +1,445 @@
+/* .croquis-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.croquis-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(4, 80px);
+    gap: 4px;
+    margin: 2rem auto;
+    position: relative;
+    width: max-content;
+    background-color: #d6d6d6;
+    padding: 10px 30px;
+    border-left: 10px solid #2081ff;
+    border-right: 10px solid #2081ff;
+}
+
+.celda {
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    position: relative;
+    box-shadow: inset 0 -5px 0 #e63946;
+}
+
+.ocupado {
+    background-color: #ffb703;
+    color: #000;
+    font-weight: bold;
+}
+
+.contenido {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.croquis-grid::before,
+.croquis-grid::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background-color: #e63946;
+    box-shadow: 0 85px #e63946, 0 170px #e63946;
+    top: 0;
+    z-index: 0;
+} */
+
+.croquis-container {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.menu-toggle {
+    font-size: 1.2rem;
+    background: #0a2342;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background-color: #105dcf;
+    transform: scale(1.05);
+}
+
+.croquis-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 140px);
+    grid-template-rows: repeat(4, 110px);
+    gap: 12px;
+    margin: auto;
+    background-color: #545454;
+    padding: 25px;
+    border-radius: 20px;
+    border-left: 14px solid #2081ff;
+    border-right: 14px solid #2081ff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.celda {
+    background-color: #e1e1e1;
+    color: #000000;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px #ffffff;
+    position: relative;
+}
+
+/* hace un efecto incómodo a la vision cuando está abierta la ".descripcion-productos" */
+/* .celda:hover {
+    z-index: 2;
+    transform: translateY(-5px);
+    transition: .1s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+} */
+
+.celda.ocupado {
+    /* background-color: #ffe066; */
+    background-image: linear-gradient(#c8c8c894, #bababa9c), url("../img/celda-ocupado.jpg");
+    background-size: cover;
+
+    color: #000000;
+    border: 2px solid #e4ca00;
+    /* border-bottom: 10px solid #bd8b02; */
+    box-shadow: 2px 2px 2px;
+}
+
+.contenido {
+    font-size: 13px;
+    margin-top: 6px;
+    width: 100%;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 130px;
+    padding-right: 6px;
+
+}
+
+
+button.btn {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    min-width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button.btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.mt-1 {
+    margin-top: 6px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.gap-1 {
+    gap: 6px;
+}
+
+.croquis-grid::before,
+.croquis-grid::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background-color: #dd0909;
+    box-shadow: 0 135px #e63946, 0 257px #e63946, 0 379px #e63946;
+    top: 0;
+    z-index: 0;
+    border-radius: 2px;
+}
+
+.producto-box {
+    background-color: #f1f3f5;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px;
+    margin-top: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.producto-box:hover {
+    background-color: #e6f4ff;
+    transform: scale(1.02);
+}
+
+.producto-box.actualizado {
+    background-color: #e0ffe0;
+}
+
+.nombres-productos {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #333;
+    text-align: center;
+}
+
+.producto-nombre {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* .descripcion-productos {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    width: 170px;
+    animation: fadeIn 0.4s ease;
+} */
+
+.descripcion-productos {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    width: 180px;
+    /* Aumentar el tamaño para que las tarjetas no se vean tan apretadas */
+    animation: fadeIn 0.4s ease, slideIn 0.4s ease;
+    transform-origin: top;
+}
+
+/* .descripcion-productos>div {
+    position: relative;
+    background-color: #b0c4da;
+    margin-bottom: 12px;
+    padding: 6px;
+    border-bottom: 1px solid #ccc;
+} */
+
+.descripcion-productos>div {
+    position: relative;
+    background-color: #f7f7f7;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.descripcion-productos>div:hover {
+    background-color: #e6f0ff;
+    /* Un pequeño efecto al pasar el ratón */
+    transform: translateY(-2px);
+}
+
+/* 
+.bultos-control {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.botones-bultos {
+    margin-top: 5px;
+    display: flex;
+    gap: 8px;
+}
+
+.botones-bultos button {
+    padding: 4px 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.botones-bultos button:hover {
+    background-color: #0056b3;
+} */
+
+.bultos-control {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centramos los botones */
+}
+
+.botones-bultos {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.botones-bultos button {
+    padding: 6px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botones-bultos button:hover {
+    background-color: #218838;
+}
+
+.input-container {
+    display: flex;
+
+}
+
+.acciones-producto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.celda.proximo-vencer {
+    border: 3px solid #ffb300;
+    background-color: #fff3cd;
+    /* color amarillo suave tipo advertencia */
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
+}
+
+.celda.proximo-vencer::before {
+    content: "⏰";
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 20px;
+}
+
+
+.resultado-busqueda {
+    border: 2px solid #4caf50 !important;
+    animation: resplandor 1.5s infinite ease-in-out;
+    border-radius: 8px;
+}
+
+.vencido {
+    animation: bordeBrillante 1s infinite alternate;
+    border: 3px solid red;
+    box-shadow: 0 0 10px red;
+}
+
+.vencido::before {
+    content: "❗";
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 20px;
+}
+
+/* KEYFRAMES */
+
+@keyframes resplandor {
+    0% {
+        box-shadow: 0 0 5px #4caf50;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #4caf50;
+    }
+
+    100% {
+        box-shadow: 0 0 5px #4caf50;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scaleY(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .croquis-grid {
+        grid-template-columns: repeat(2, 140px);
+        grid-template-rows: auto;
+        padding: 20px;
+    }
+
+    .menu-toggle {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scaleY(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+
+@keyframes bordeBrillante {
+    0% {
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+
+    50% {
+        border-color: darkred;
+        box-shadow: 0 0 15px darkred;
+    }
+
+    100% {
+        border-color: crimson;
+        box-shadow: 0 0 20px crimson;
+    }
+}

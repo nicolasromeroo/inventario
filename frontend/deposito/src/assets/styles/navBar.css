@@ -1,0 +1,38 @@
+.navBar {
+    background-color: rgb(65, 65, 65) !important;
+}
+
+.nav-btn {
+    background-color: transparent;
+    border: 2px solid #ffffff88;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: all 0.1s ease-in-out;
+    font-weight: 500;
+}
+
+.nav-btn:hover {
+    background-color: #ffbf00ce;
+    transform: scale(1.05);
+    border-color: #ffffffcc;
+    color: #ffffff !important;
+    /* -webkit-text-stroke: 1px black; */
+}
+
+.nav-animated {
+    animation: fadeInDown 0.6s ease-in-out;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

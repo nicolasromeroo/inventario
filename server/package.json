@@ -1,0 +1,38 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "testMocha": "mocha test/Users/Users.test.js",
+    "testChai": "mocha test/Users/UsersChai.test.js",
+    "testSuper": "mocha test/Users/UsersSupertest.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.1.0",
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "multer": "^1.4.5-lts.1",
+    "safe-buffer": "^5.2.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^11.0.5",
+    "uuidv4": "^6.2.13"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@faker-js/faker": "^9.4.0",
+    "chai": "^5.2.0",
+    "mocha": "^11.1.0",
+    "supertest": "^7.0.0"
+  }
+}

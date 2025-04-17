@@ -1,0 +1,199 @@
+/api/tasks:
+  post:
+    summary: Crear una nueva tarea
+    tags:
+      - Tasks
+    security:
+      - BearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/requestBodies/CreateTask"
+    responses:
+      "201":
+        description: Tarea creada exitosamente
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Task"
+      "400":
+        description: Faltan datos requeridos para crear la tarea
+      "500":
+        description: Error al crear la tarea
+
+  get:
+    summary: Obtener todas las tareas del usuario autenticado
+    tags:
+      - Tasks
+    security:
+      - BearerAuth: []
+    responses:
+      "200":
+        description: Lista de tareas obtenida exitosamente
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Task"
+      "400":
+        description: Usuario no autenticado
+      "500":
+        description: Error al obtener las tareas
+
+/api/tasks/{taskId}:
+  get:
+    summary: Obtener una tarea por su ID
+    tags:
+      - Tasks
+    security:
+      - BearerAuth: []
+    parameters:
+      - name: taskId
+        in: path
+        required: true
+        description: ID de la tarea a buscar
+        schema:
+          type: string
+    responses:
+      "200":
+        description: Tarea encontrada exitosamente
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Task"
+      "400":
+        description: Falta el ID de la tarea
+      "404":
+        description: Tarea no encontrada
+      "500":
+        description: Error al obtener la tarea
+
+  put:
+    summary: Actualizar el estado de una tarea
+    tags:
+      - Tasks
+    security:
+      - BearerAuth: []
+    parameters:
+      - name: taskId
+        in: path
+        required: true
+        description: ID de la tarea a actualizar
+        schema:
+          type: string
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/requestBodies/UpdateTask"
+    responses:
+      "200":
+        description: Tarea actualizada exitosamente
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Task"
+      "400":
+        description: Datos inválidos o falta el ID de la tarea
+      "404":
+        description: Tarea no encontrada
+      "500":
+        description: Error al actualizar la tarea
+
+  delete:
+    summary: Eliminar una tarea por su ID
+    tags:
+      - Tasks
+    security:
+      - BearerAuth: []
+    parameters:
+      - name: taskId
+        in: path
+        required: true
+        description: ID de la tarea a eliminar
+        schema:
+          type: string
+    responses:
+      "200":
+        description: Tarea eliminada correctamente
+      "400":
+        description: Falta el ID de la tarea
+      "404":
+        description: Tarea no encontrada
+      "500":
+        description: Error al eliminar la tarea
+
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID autogenerado de la tarea
+        title:
+          type: string
+          description: Título de la tarea
+        category:
+          type: string
+          description: Categoría de la tarea
+        priority:
+          type: string
+          enum: [alta, media, baja]
+          description: Prioridad de la tarea
+        completed:
+          type: boolean
+          description: Estado de la tarea (completada o no)
+        userId:
+          type: string
+          description: ID del usuario asociado
+        createdAt:
+          type: string
+          format: date-time
+          description: Fecha de creación de la tarea
+      example:
+        _id: "64f67a4b2e09f1b2a1d3f1a2"
+        title: "Revisar inventario"
+        category: "Logística"
+        priority: "alta"
+        completed: false
+        userId: "64f67a4b2e09f1b2a1d3f1a2"
+        createdAt: "2023-09-10T10:30:00Z"
+
+  requestBodies:
+    CreateTask:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título de la tarea
+        category:
+          type: string
+          description: Categoría de la tarea
+        priority:
+          type: string
+          enum: [alta, media, baja]
+          description: Nivel de prioridad de la tarea
+      example:
+        title: "Actualizar sistema"
+        category: "IT"
+        priority: "alta"
+
+    UpdateTask:
+      type: object
+      properties:
+        completed:
+          type: boolean
+          description: Estado de la tarea (true o false)
+      example:
+        completed: true
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

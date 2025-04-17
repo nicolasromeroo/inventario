@@ -1,0 +1,125 @@
+
+* {
+    padding: 10px;
+    margin: 0;
+}
+
+.task {
+    background-color: #e77979;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Tareas completadas */
+.task.completed {
+    background-color: #d4edda;
+    /* Color verde claro */
+    border-color: #28a745;
+    /* Borde verde */
+    color: #155724;
+    /* Color de texto verde */
+    transform: scale(1.05);
+    /* Efecto de escala suave */
+}
+
+/* Botón para marcar como completado */
+.task button.complete-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.task button.complete-btn:hover {
+    background-color: #218838;
+    /* Color más oscuro al pasar el ratón */
+}
+
+/* Icono de tarea completada */
+.task.completed .check-icon {
+    color: #28a745;
+    font-size: 1.5em;
+}
+
+/* Estilo del botón para eliminar */
+.task button.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.task button.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Estilos para los botones */
+.complete-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .complete-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .undo-btn {
+    background-color: #f44336; /* Rojo para deshacer */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .undo-btn:hover {
+    background-color: #da190b;
+  }
+  
+  .delete-btn {
+    background-color: #e7e7e7;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ccc;
+  }
+  
+  /* Estilos para las tareas completadas */
+  .task.completed {
+    background-color: #d3ffd3; /* Fondo verde claro */
+    text-decoration: line-through;
+  }
+
+/* Animación al marcar como completada */
+@keyframes completeAnimation {
+    0% {
+        background-color: #fff;
+        transform: scale(1);
+    }
+
+    100% {
+        background-color: #d4edda;
+        transform: scale(1.05);
+    }
+}
