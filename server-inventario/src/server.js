@@ -17,8 +17,9 @@ app.use(cors({
 app.use("/api/products", productsRoutes)
 app.use("/api/dates", datesRoutes)
 
-app.listen(3000, () => {
-    console.log("Servidor express creado con éxito.")
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
 
 export default app
