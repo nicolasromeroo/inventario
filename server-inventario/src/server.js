@@ -15,7 +15,7 @@ app.use(cors({
     "https://inventario-git-master-nicolas-projects-a0f909f1.vercel.app"]
 }))
 
-app.use("/", productsRouter)
+app.use("/", productsRoutes)
 app.use("/api/products", productsRoutes)
 app.use("/api/dates", datesRoutes)
 
