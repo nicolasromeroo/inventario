@@ -13,7 +13,7 @@ const Racks = () => {
 
     const fetchProductos = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/api/products/getProducts");
+            const res = await axios.get("https://inventario-ijcm.onrender.com/api/products/getProducts");
             setProductos(res.data);
             console.log("Productos recibidos:", res.data);
         } catch (err) {
@@ -64,7 +64,7 @@ const Racks = () => {
         const nuevoStock = nuevoValor * unidadesPorBulto;
 
         try {
-            await axios.put(`http://localhost:3000/api/products/updateProduct/${id}`, {
+            await axios.put(`https://inventario-ijcm.onrender.com/api/products/updateProduct/${id}`, {
                 cantidadBultos: nuevoValor,
                 stock: nuevoStock,
             });
@@ -77,7 +77,7 @@ const Racks = () => {
 
     const eliminarProductoDePosicion = async (id) => {
         try {
-            await axios.put(`http://localhost:3000/api/products/updateProduct/${id}`, {
+            await axios.put(`https://inventario-ijcm.onrender.com/api/products/updateProduct/${id}`, {
                 position: "",
             });
             fetchProductos();
@@ -88,7 +88,7 @@ const Racks = () => {
 
     const moverProductoDePosicion = async (id, nuevaPosicion) => {
         try {
-            await axios.put(`http://localhost:3000/api/products/updateProduct/${id}`, {
+            await axios.put(`https://inventario-ijcm.onrender.com/api/products/updateProduct/${id}`, {
                 position: nuevaPosicion,
             });
             fetchProductos();
