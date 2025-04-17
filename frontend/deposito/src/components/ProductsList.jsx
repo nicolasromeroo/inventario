@@ -49,7 +49,7 @@ const ProductList = () => {
 
     const fetchProductos = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/api/products/getProducts")
+            const res = await axios.get("https://inventario-ijcm.onrender.com/api/products/getProducts")
             setProducts(res.data)
         } catch (err) {
             console.error("Error al obtener propductos:", err)
@@ -145,7 +145,7 @@ const ProductList = () => {
                 }
             }
 
-            await axios.put(`http://localhost:3000/api/products/updateProduct/${id}`, updatePayload);
+            await axios.put(`https://inventario-ijcm.onrender.com/api/products/updateProduct/${id}`, updatePayload);
             fetchProductos();
         } catch (err) {
             console.error("Error al actualizar bultos:", err);
@@ -154,7 +154,7 @@ const ProductList = () => {
 
     const updateProductPosition = async (productId, position) => {
         try {
-            const res = await axios.put(`http://localhost:3000/api/products/updateProduct/${productId}`, {
+            const res = await axios.put(`https://inventario-ijcm.onrender.com/api/products/updateProduct/${productId}`, {
                 position: position,
             });
             fetchProductos();
