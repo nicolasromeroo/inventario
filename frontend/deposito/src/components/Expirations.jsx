@@ -44,7 +44,7 @@ const Expirations = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/dates/getDate")
+        fetch("https://inventario-ijcm.onrender.com/api/dates/getDate")
             .then((res) => res.json())
             .then((data) => setProducts(data))
             .catch((err) => console.error("Error al obtener vencimientos:", err));
