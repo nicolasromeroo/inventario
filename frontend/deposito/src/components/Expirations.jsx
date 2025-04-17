@@ -29,7 +29,7 @@ const Expirations = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/products/deleteProduct/${id}`, {
+            const response = await fetch(`https://inventario-ijcm.onrender.com/api/products/deleteProduct/${id}`, {
                 method: "DELETE",
             });
 
