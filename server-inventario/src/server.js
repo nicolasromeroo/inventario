@@ -12,7 +12,8 @@ const app = express()
 app.use(express.json())
 app.use(cors({
     origin: ["http://localhost:5173", 
-    "https://inventario-git-master-nicolas-projects-a0f909f1.vercel.app"]
+    "https://inventario-git-master-nicolas-projects-a0f909f1.vercel.app",
+            "https://inventario-kohl.vercel.app"]
 }))
 
 app.use("/", productsRoutes)
